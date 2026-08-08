@@ -18,11 +18,34 @@ boton.addEventListener("click", async () => {
             resultado.textContent = "No se pudo obtener la URL.";
             return;
         }
+     // Se agrega la busque a los dominios de Sources, normalización de los dominios
+        const url = new URL(pestaña.url);
+        const dominio = url.hostname;
+        const dominioNormalizado = dominio.replace(/^www\./, "");
 
-        resultado.textContent = `Página detectada:\n${pestaña.url}`;
+        console.log("Dominio original:", dominio);
+        console.log("Dominio normalizado:", dominioNormalizado);
+
+        resultado.textContent = `Dominio detectado:\n${dominioNormalizado}`;
 
         console.log("URL detectada:", pestaña.url);
+        console.log("Dominio detectado:", dominio);
 
+        const respuesta = await fetch("data/sources.json");
+        const fuentes = await respuesta.json();
+
+         const fuenteEncontrada = fuentes.find(
+         fuente => fuente.dominio === dominioNormalizado
+         );
+
+         if (fuenteEncontrada) {
+         resultado.textContent =
+          `Fuente verificada: ${fuenteEncontrada.entidad}`;
+          } else {
+          resultado.textContent =
+         `Dominio no encontrado: ${dominioNormalizado}`;
+         }
+   
     } catch (error) {
         console.error("Error al obtener la URL:", error);
         resultado.textContent = "Ocurrió un error al obtener la página.";
