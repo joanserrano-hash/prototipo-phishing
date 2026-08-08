@@ -4,16 +4,27 @@ const boton = document.getElementById("btnVerificar");
 const resultado = document.getElementById("resultado");
 
 boton.addEventListener("click", async () => {
-    resultado.textContent = "Cargando fuentes...";
+    resultado.textContent = "Obteniendo página...";
 
     try {
-        const respuesta = await fetch("data/sources.json");
-        const fuentes = await respuesta.json();
+        const pestañas = await chrome.tabs.query({
+            active: true,
+            currentWindow: true
+        });
 
-        resultado.textContent = `Fuentes cargadas: ${fuentes.length}`;
-        console.log("Fuentes:", fuentes);
+        const pestaña = pestañas[0];
+
+        if (!pestaña || !pestaña.url) {
+            resultado.textContent = "No se pudo obtener la URL.";
+            return;
+        }
+
+        resultado.textContent = `Página detectada:\n${pestaña.url}`;
+
+        console.log("URL detectada:", pestaña.url);
+
     } catch (error) {
-        console.error("Error:", error);
-        resultado.textContent = "No se pudieron cargar las fuentes.";
+        console.error("Error al obtener la URL:", error);
+        resultado.textContent = "Ocurrió un error al obtener la página.";
     }
 });
