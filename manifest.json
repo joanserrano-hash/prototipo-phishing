@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Alerta Digital",
+  "version": "1.0.0",
+  "description": "Prototipo académico para apoyar la identificación de enlaces sospechosos.",
+  "permissions": [
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "Alerta Digital"
+  }
+}
