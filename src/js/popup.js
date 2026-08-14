@@ -51,3 +51,10 @@ boton.addEventListener("click", async () => {
         resultado.textContent = "Ocurrió un error al obtener la página.";
     }
 });
+
+const validacion = validarDominio(
+    pestana.url,
+    fuentes
+);
+
+console.log(validacion);
