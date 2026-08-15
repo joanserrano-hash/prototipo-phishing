@@ -1,3 +1,102 @@
-{
-    "sources":[]
-}
+[
+  {
+    "entidad": "Bancolombia",
+    "categoria": "Bancos",
+    "dominio": "bancolombia.com"
+  },
+  {
+    "entidad": "Banco Caja Social",
+    "categoria": "Bancos",
+    "dominio": "bancocajasocial.com"
+  },
+  {
+    "entidad": "Banco de Bogotá",
+    "categoria": "Bancos",
+    "dominio": "bancodebogota.com"
+  },
+  {
+    "entidad": "Banco Davivienda",
+    "categoria": "Bancos",
+    "dominio": "davivienda.com"
+  },
+  {
+    "entidad": "Banco Falabella",
+    "categoria": "Bancos",
+    "dominio": "bancofalabella.com.co"
+  },
+  {
+    "entidad": "Banco AV Villas",
+    "categoria": "Bancos",
+    "dominio": "avvillas.com.co"
+  },
+  {
+    "entidad": "Banco Agrario de Colombia",
+    "categoria": "Bancos",
+    "dominio": "bancoagrario.gov.co"
+  },
+  {
+    "entidad": "EPS Sanitas",
+    "categoria": "Salud",
+    "dominio": "epssanitas.com"
+  },
+  {
+    "entidad": "Salud Total",
+    "categoria": "Salud",
+    "dominio": "saludtotal.com.co"
+  },
+  {
+    "entidad": "Policia Nacional",
+    "categoria": "Entidades Gobierno",
+    "dominio": "policia.gov.co"
+  },
+  {
+    "entidad": "Fiscalia General",
+    "categoria": "Entidades Gobierno",
+    "dominio": "fiscalia.gov.co"
+  },
+  {
+    "entidad": "Registraduría",
+    "categoria": "Entidades Gobierno",
+    "dominio": "registraduria.gov.co"
+  },
+  {
+    "entidad": "Procuraduría",
+    "categoria": "Entidades Gobierno",
+    "dominio": "procuraduria.gov.co"
+  },
+  {
+    "entidad": "Contraloría",
+    "categoria": "Entidades Gobierno",
+    "dominio": "contraloria.gov.co"
+  },
+  {
+    "entidad": "Éxito",
+    "categoria": "Comercio",
+    "dominio": "exito.com"
+  },
+  {
+    "entidad": "Alkosto",
+    "categoria": "Comercio",
+    "dominio": "alkosto.com"
+  },
+  {
+    "entidad": "Avianca",
+    "categoria": "Comercio",
+    "dominio": "avianca.com"
+  },
+  {
+    "entidad": "Homcenter",
+    "categoria": "Comercio",
+    "dominio": "homecenter.com.co"
+  },
+  {
+    "entidad": "Jumbo",
+    "categoria": "Comercio",
+    "dominio": "jumbocolombia.com"
+  },
+  {
+    "entidad": "Pricesmart",
+    "categoria": "Comercio",
+    "dominio": "pricesmart.com"
+  }
+]
