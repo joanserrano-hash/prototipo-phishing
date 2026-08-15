@@ -2,28 +2,27 @@
 
 ## Proyecto de grado
 
-Extensión web para apoyar la identificación de enlaces sospechosos en adultos mayores.
-
----
+Prototipo de extensión web para apoyar la identificación de posibles enlaces sospechosos en adultos mayores.
 
 ## Estado
 
-🟢 Fase 1
-
-Configuración inicial.
-
----
+Versión de validación para ejecución de casos de prueba.
 
 ## Tecnologías
 
 - HTML5
-
 - CSS3
-
 - JavaScript
+- Chrome Extension Manifest V3
+- Git / GitHub
 
-- Manifest V3
+## Arquitectura del prototipo
 
-- Git
+- `popup.js`: obtiene la URL activa y controla la interfaz.
+- `validator.js`: concentra las reglas de validación.
+- `sources.json`: contiene la base local de fuentes oficiales.
+- `popup.css`: presenta los estados de resultado de forma visual.
 
-- GitHub
+## Importante
+
+La herramienta es un prototipo académico y no garantiza la seguridad total de un sitio web.

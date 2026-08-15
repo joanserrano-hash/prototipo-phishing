@@ -45,12 +45,12 @@
     "dominio": "saludtotal.com.co"
   },
   {
-    "entidad": "Policia Nacional",
+    "entidad": "Policía Nacional",
     "categoria": "Entidades Gobierno",
     "dominio": "policia.gov.co"
   },
   {
-    "entidad": "Fiscalia General",
+    "entidad": "Fiscalía General",
     "categoria": "Entidades Gobierno",
     "dominio": "fiscalia.gov.co"
   },
@@ -85,7 +85,7 @@
     "dominio": "avianca.com"
   },
   {
-    "entidad": "Homcenter",
+    "entidad": "Homecenter",
     "categoria": "Comercio",
     "dominio": "homecenter.com.co"
   },
@@ -95,7 +95,7 @@
     "dominio": "jumbocolombia.com"
   },
   {
-    "entidad": "Pricesmart",
+    "entidad": "PriceSmart",
     "categoria": "Comercio",
     "dominio": "pricesmart.com"
   }

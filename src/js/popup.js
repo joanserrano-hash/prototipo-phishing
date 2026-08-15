@@ -1,10 +1,68 @@
-console.log("Extensión iniciada");
+console.log("Extensión Alerta Digital iniciada");
 
 const boton = document.getElementById("btnVerificar");
 const resultado = document.getElementById("resultado");
 
+function mostrarResultado(validacion) {
+    resultado.className = "resultado";
+
+    const clases = {
+        confiable: "resultado--confiable",
+        sospechoso: "resultado--sospechoso",
+        no_verificable: "resultado--no-verificable",
+        no_aplica: "resultado--no-aplica",
+        error: "resultado--error"
+    };
+
+    resultado.classList.add(
+        clases[validacion.estado] ?? "resultado--no-verificable"
+    );
+
+    const titulos = {
+        confiable: "Sitio confiable",
+        sospechoso: "Posible riesgo",
+        no_verificable: "No verificable",
+        no_aplica: "No aplica",
+        error: "No fue posible analizar"
+    };
+
+    resultado.innerHTML = `
+        <strong>${titulos[validacion.estado] ?? "Resultado"}</strong>
+        <span>${validacion.mensaje}</span>
+        ${validacion.dominio ? `<small>Dominio: ${validacion.dominio}</small>` : ""}
+    `;
+}
+
+function esPaginaNoAplicable(url) {
+    try {
+        const protocolo = new URL(url).protocol.toLowerCase();
+
+        return [
+            "chrome:",
+            "edge:",
+            "about:",
+            "file:",
+            "chrome-extension:"
+        ].includes(protocolo);
+    } catch {
+        return false;
+    }
+}
+
+async function cargarFuentes() {
+    const respuesta = await fetch("data/sources.json");
+
+    if (!respuesta.ok) {
+        throw new Error(`No se pudo cargar sources.json (${respuesta.status}).`);
+    }
+
+    return respuesta.json();
+}
+
 boton.addEventListener("click", async () => {
-    resultado.textContent = "Obteniendo página...";
+    boton.disabled = true;
+    resultado.className = "resultado resultado--cargando";
+    resultado.textContent = "Analizando página...";
 
     try {
         const pestañas = await chrome.tabs.query({
@@ -14,47 +72,38 @@ boton.addEventListener("click", async () => {
 
         const pestaña = pestañas[0];
 
-        if (!pestaña || !pestaña.url) {
-            resultado.textContent = "No se pudo obtener la URL.";
+        if (!pestaña?.url) {
+            mostrarResultado({
+                estado: "error",
+                dominio: null,
+                mensaje: "No se pudo obtener la URL."
+            });
             return;
         }
-     // Se agrega la busque a los dominios de Sources, normalización de los dominios
-        const url = new URL(pestaña.url);
-        const dominio = url.hostname;
-        const dominioNormalizado = dominio.replace(/^www\./, "");
 
-        console.log("Dominio original:", dominio);
-        console.log("Dominio normalizado:", dominioNormalizado);
+        if (esPaginaNoAplicable(pestaña.url)) {
+            mostrarResultado({
+                estado: "no_aplica",
+                dominio: null,
+                mensaje: "Esta página interna o local no puede evaluarse con este prototipo."
+            });
+            return;
+        }
 
-        resultado.textContent = `Dominio detectado:\n${dominioNormalizado}`;
+        const fuentes = await cargarFuentes();
+        const validacion = validarDominio(pestaña.url, fuentes);
 
-        console.log("URL detectada:", pestaña.url);
-        console.log("Dominio detectado:", dominio);
+        mostrarResultado(validacion);
 
-        const respuesta = await fetch("data/sources.json");
-        const fuentes = await respuesta.json();
-
-         const fuenteEncontrada = fuentes.find(
-         fuente => fuente.dominio === dominioNormalizado
-         );
-
-         if (fuenteEncontrada) {
-         resultado.textContent =
-          `Fuente verificada: ${fuenteEncontrada.entidad}`;
-          } else {
-          resultado.textContent =
-         `Dominio no encontrado: ${dominioNormalizado}`;
-         }
-   
     } catch (error) {
-        console.error("Error al obtener la URL:", error);
-        resultado.textContent = "Ocurrió un error al obtener la página.";
+        console.error("Error durante la validación:", error);
+
+        mostrarResultado({
+            estado: "error",
+            dominio: null,
+            mensaje: "Ocurrió un error durante el análisis. Intente nuevamente."
+        });
+    } finally {
+        boton.disabled = false;
     }
 });
-
-const validacion = validarDominio(
-    pestana.url,
-    fuentes
-);
-
-console.log(validacion);

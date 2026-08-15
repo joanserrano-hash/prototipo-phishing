@@ -1,50 +1,37 @@
 <!DOCTYPE html>
-
 <html lang="es">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Alerta Digital</title>
-
-<link rel="stylesheet"
-href="css/popup.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerta Digital</title>
+    <link rel="stylesheet" href="css/popup.css">
 </head>
-
 <body>
+    <main class="container">
+        <h1>🛡️ Alerta Digital</h1>
 
-<div class="container">
+        <p class="descripcion">
+            Verifique si el sitio que está visitando coincide con una fuente registrada.
+        </p>
 
-<h1>🛡️ Alerta Digital</h1>
+        <button id="btnVerificar" type="button">
+            Verificar página
+        </button>
 
-<p>
+        <section
+            id="resultado"
+            class="resultado resultado--espera"
+            aria-live="polite"
+        >
+            Esperando análisis...
+        </section>
 
-Prototipo para la identificación de enlaces sospechosos.
+        <p class="aviso">
+            Este prototipo es una herramienta de apoyo y no garantiza la seguridad total de un sitio web.
+        </p>
+    </main>
 
-</p>
-
-<button id="btnVerificar">
-
-Verificar página
-
-</button>
-
-<div id="resultado">
-
-Esperando análisis...
-
-</div>
-
-</div>
-
-<script src="js/popup.js"></script>
-
+    <script src="js/validator.js"></script>
+    <script src="js/popup.js"></script>
 </body>
-
 </html>
