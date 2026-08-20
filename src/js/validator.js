@@ -174,7 +174,7 @@ function validarDominio(valor, fuentes) {
             entidad: oficial.entidad,
             dominio,
             mensaje:
-                `Fuente verificada: ${oficial.entidad}`
+                `Esta página pertenece a una entidad verificada: ${oficial.entidad}`
         };
     }
 
@@ -194,7 +194,7 @@ function validarDominio(valor, fuentes) {
             entidad: sospechoso.entidad,
             dominio,
             mensaje:
-                `El dominio se parece al sitio oficial de ${sospechoso.entidad}. Verifique antes de continuar.`
+                `Esta página puede no pertenecer al sitio oficial ${sospechoso.entidad}. Verifique antes de ingresar información personal.`
         };
     }
 
@@ -204,6 +204,6 @@ function validarDominio(valor, fuentes) {
         entidad: null,
         dominio,
         mensaje:
-            "El dominio no está registrado en la base de fuentes oficiales."
+            "No fue posible verificar esta página con nuestra información disponible. Tenga precaución."
     };
 }

@@ -90,12 +90,12 @@ button:disabled {
 }
 
 .resultado--sospechoso {
-    border-color: #d93025;
+    border-color: #f9ab00;
     background: #fce8e6;
 }
 
 .resultado--no-verificable {
-    border-color: #f9ab00;
+    border-color: #d93025;
     background: #fef7e0;
 }
 
